@@ -1,4 +1,4 @@
-messenger = input('벌점 문자를 모두 넣어주세요')
+messenger = input('벌점 이유()를 모두 넣어주세요')
 messenger = messenger.split('.')
 score = int(0)
 bur = {}
@@ -111,6 +111,6 @@ for i in bur :  #가장 많은 벌점이 쌓인 벌점 항목 찾기
     if bur[i] == max(bur.values()) :
         most2 = i
 print('당신의 벌점은',score,'점 입니다')
-print('당신은 ',name[most],' 에 가장 많이 걸렸고 ',name[most2],' 에 가장 많은 벌점을 받았습니다')
+print('당신은 ',name[most],' 에 가장 많이 걸렸고 ',name[most2],' 항목에 가장 많은 벌점을 받았습니다')
 a = input('당신이 알고싶은 벌점항목을 입력해주세요')
-print('당신이 ',name[a],' 로 걸린 횟수는 ',num[a],'점 , 받은 벌점은 ',bur[a],' 점 입니다')
+print('당신이 ',name[a],' 로 걸린 횟수는 ',num[a],'번 , 받은 벌점은 ',bur[a],' 점 입니다')
