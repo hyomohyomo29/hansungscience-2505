@@ -1,6 +1,6 @@
 messenger = input('벌점 문자를 모두 넣어주세요')
 messenger = messenger.split('.')
-score = int(0)
+score = int(0) #시작점수를 0으로 맟춰놓는다
 bur = {}
 bur['미소등'] = 0
 bur['복장'] = 0
@@ -53,7 +53,7 @@ name['정리'] = '방 정리 양호'
 name['봉사'] = '자습실 청소 및 간식시간 봉사'
 name['소란'] = '자습실 내 소란 행위'
 for i in messenger : #for 문을 이용해서 벌점문자들의 리스트에서 벌점의 항목을 찾아낸
-    if '미소등' in i : # 벌점 문자의 핵심 단
+    if '미소등' in i : # 벌점 문자의 핵심 단어를 찾아낸다
         num['미소등'] = num['미소등'] + 1
         bur['미소등'] = bur['미소등'] + 1
     if '복장' in i : 
