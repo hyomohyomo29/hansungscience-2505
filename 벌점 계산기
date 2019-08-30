@@ -1,8 +1,8 @@
 messenger = input('벌점 이유()를 모두 넣어주세요')
 messenger = messenger.split('.')
 
-score = 0
-bur_list=['미소등','복장','출입','지각','불참','음식','노트북','취침','외출','귀가','불이행','전자기기','입실시각','소란','정리','봉사']
+score = int(0) #시작점수를 0으로 맟춰놓는다
+
 bur = {}
 num = {}
 for i in bur_list:
@@ -29,22 +29,55 @@ name['봉사'] = '자습실 청소 및 간식시간 봉사'
 name['소란'] = '자습실 내 소란 행위'
 
 for i in messenger : #for 문을 이용해서 벌점문자들의 리스트에서 벌점의 항목을 찾아낸
+    if '미소등' in i : # 벌점 문자의 핵심 단어를 찾아낸다
+        num['미소등'] = num['미소등'] + 1
+        bur['미소등'] = bur['미소등'] + 1
+    if '복장' in i : 
+        num['복장'] += 1
+        bur['복장'] += 1
+    if '출입' in i :
+        num['출입'] += 1
+        bur['출입'] += 2
+    if '지각' in i :
+        num['지각'] += 1
+        bur['지각'] += 2
+    if '불참' in i :
+        num['불참'] += 1
+        bur['불참'] += 4
+    if '음식' in i :
+        num['음식'] += 1
+        bur['음식'] += 3
+    if '노트북' in i :
+        num['노트북'] += 1
+        bur['노트북'] += 4
+    if '취침' in i :
+        num['취침'] += 1
+        bur['취침'] += 3
+    if '외출' in i :
+        num['외출'] += 1
+        bur['외출'] += 4
+    if '귀가' in i :
+        num['귀가'] += 1
+        bur['귀가'] +=6
+    if '불이행' in i :
+        num['불이행'] += 1
+        bur['불이행'] += 1
+    if '전자기기' in i :
+        num['전자기기'] += 1
+        bur['전자기기'] += 4
+    if '입실시각' in i :
+        num['입실시각'] += 1
+        bur['입실시각'] += 1
+    if '소란' in i :
+        num['소란'] += 1
+        bur['소란'] = bur['소란']+1
+    if'방 정리 양호' in messenger :
+        num['정리'] += 1
+        bur['정리'] -= 1
+    if '봉사' in messenger :
+        num['봉사'] += 1
+        bur['봉사'] -= 1
 
-    if i in bur_list:
-        num[i] = num[i] + 1
-        
-    if i in ('미소등','복장','불이행','입실시각','소란') :
-        bur[i] += 1
-    elif i in ('출입','지각') : 
-        bur[i] += 2
-    elif i in ('음식','취침') : 
-        bur[i] += 3
-    elif i in ('불참','노트북','외출','전자기기') : 
-        bur[i] += 4
-    elif i in '귀가' : 
-        bur[i] += 6
-    elif i in ('방 정리 양호','봉사') : 
-        bur[i] -= 1
 
 for i in bur.values() :
     score += i
