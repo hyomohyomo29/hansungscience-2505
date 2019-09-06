@@ -1,10 +1,19 @@
-messenger = input('벌점 이유()를 모두 넣어주세요')
+import matplotlib.pyplot as plt
+import numpy as np
+
+from matplotlib import font_manager, rc
+font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
+rc('font', family=font_name)
+
+%matplotlib inline
+
+
+
+messenger = input('벌점 문자를 모두 넣어주세요')
 messenger = messenger.split('.')
-
-score = int(0) #시작점수를 0으로 맟춰놓는다
-
+score = int(0)
 bur = {}
-bur['미소등'] = 0 #기숙사에서 오는 벌점문자를 구별하기 위한 핵심키워드
+bur['미소등'] = 0
 bur['복장'] = 0
 bur['출입'] = 0
 bur['지각'] = 0
@@ -37,22 +46,13 @@ num['입실시각'] = 0
 num['정리'] = 0
 num['봉사'] = 0
 num['소란'] = 0
-name = {} #위에서 설정한 핵심키워드로 문자들을 구별해 값들을 구한 후 출력하기 위한 기숙사의 공식적인 벌점항목들로 바꾼다
-
-num = {}
-for i in bur_list:
-    bur[i]=0
-    num[i]=0 #벌점 걸린 횟수, 벌점량 분석
-
 name = {} #출력할 때 우리만의 언어에서 공식적인 언어로 변환하기 위한 과정
-
-
 name['미소등'] = '미소등'
 name['복장'] = '용의 복장 규정 위반'
 name['출입'] = '기숙사 출입 규정 위반'
 name['지각'] = '아침 점호 지각'
-name['점호불참'] = '아침 점호 불참'
-name['점호음식'] = '생활관 내 음식물 반입'
+name['불참'] = '아침 점호 불참'
+name['음식'] = '생활관 내 음식물 반입'
 name['노트북'] = '기숙사 내 노트북 무단반입'
 name['취침'] = '취침 규정 위반'
 name['외출'] = '무단 외출'
@@ -63,9 +63,8 @@ name['입실시각'] = '자습실 입실시각 미준수'
 name['정리'] = '방 정리 양호'
 name['봉사'] = '자습실 청소 및 간식시간 봉사'
 name['소란'] = '자습실 내 소란 행위'
-
 for i in messenger : #for 문을 이용해서 벌점문자들의 리스트에서 벌점의 항목을 찾아낸
-    if '미소등' in i : # 벌점 문자의 핵심 단어를 찾아낸다
+    if '미소등' in i : # 벌점 문자의 핵심 단
         num['미소등'] = num['미소등'] + 1
         bur['미소등'] = bur['미소등'] + 1
     if '복장' in i : 
@@ -114,7 +113,6 @@ for i in messenger : #for 문을 이용해서 벌점문자들의 리스트에서
         num['봉사'] += 1
         bur['봉사'] -= 1
 
-
 for i in bur.values() :
     score += i
 for i in num :  # 가장 많은 횟수로 걸린 벌점 항목 찾기
@@ -124,9 +122,17 @@ for i in bur :  #가장 많은 벌점이 쌓인 벌점 항목 찾기
     if bur[i] == max(bur.values()) :
         most2 = i
 print('당신의 벌점은',score,'점 입니다')
-
 print('당신은 ',name[most],' 에 가장 많이 걸렸고 ',name[most2],' 에 가장 많은 벌점을 받았습니다')
-print('입력가능한 항목은 미소등, 복장, 출입, 점호지각, 점호불참, 음식, 노트북, 취침, 외출, 귀가, 불이행, 전자기기, 입실시각, 소란, 정리, 봉사 입니다.')
 
-a = input('당신이 알고싶은 벌점항목을 입력해주세요')
-print('당신이 ',name[a],' 로 걸린 횟수는 ',num[a],'번 , 받은 벌점은 ',bur[a],' 점 입니다')
+
+
+x = np.arange(16)
+
+
+
+plt.bar(x, list(num.values()))
+plt.xticks(x, list(name.values()))
+plt.xticks(rotation=90)
+
+
+plt.show()
